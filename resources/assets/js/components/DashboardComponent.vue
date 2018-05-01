@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div v-for="post in posts" class="col-md-8">
+            <div v-for="post in posts" class="col-md-8 card-box">
                 <post-card 
                     v-bind:key="post.id"
                     v-bind:post="post"

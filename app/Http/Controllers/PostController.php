@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Storage;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::paginate();
+        return Post::with('user')->orderBy('updated_at', 'DESC')->paginate();
+    }
+
+    public function create() {
+        return view('posts.create');
     }
 
     /**
@@ -25,13 +31,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
 
         $post = new Post;
         
         $post->body = $request->input('body');
         $post->user_id = $user->id;
-        $post->imgage_url = Storage::putFile('posts/' . $user->email, $request->file('image'));
+        $post->image_url = '/storage/' . Storage::disk('public')->putFile('posts/' . $user->email, $request->file('file'));
 
         $post->save();
 
@@ -49,6 +55,11 @@ class PostController extends Controller
         return $post;
     }
 
+    public function edit(Post $post) {
+        return view('posts.update')
+            ->with(['post' => $post]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -58,7 +69,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->description($request->input('description'));
+        $post->body = $request->input('body');
 
         $post->save();
 

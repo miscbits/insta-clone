@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('posts.index');
+    }
+
+    public function show(Post $post) {
+        $post->user;
+        return view('posts.show')
+            ->with(['post' => $post]);
     }
 }

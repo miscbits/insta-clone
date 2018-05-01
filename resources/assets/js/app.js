@@ -17,6 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('dashboard-component', require('./components/DashboardComponent.vue'));
 Vue.component('post-card', require('./components/PostComponent.vue'));
+Vue.component('post-form', require('./components/PostForm.vue'));
+Vue.component('post-update', require('./components/PostUpdate.vue'));
 
 Vue.component(
     'passport-clients',

@@ -1,5 +1,8 @@
 <template>
     <div class="card card-default">
+        <div class="card-header">
+            <p>{{ post.user.name }} - <a :href="'/posts/' + post.id">view</a></p>
+        </div>
         <div class="card-body">
             <img :src="post.image_url" alt="" >
         </div>
