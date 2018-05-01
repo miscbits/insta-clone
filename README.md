@@ -15,3 +15,5 @@ Topics we will be going over in no particular order
 * [Passport](https://laravel.com/docs/5.6/passport)
 
 While we won't be talking about the specifics of Vue.JS in the class we will be using it. More on Vue can be found at [vuejs.org](https://vuejs.org/)
+
+In this repo, there are several branches that will go over where we should be at the end of any given part. The completed product after the 3 hour session is in the part 3 branch.
